@@ -1,0 +1,15 @@
+<aiml>
+    <category>
+        <pattern>Hi there My name is *</pattern>
+        <template>
+            Yes Muhammad Ahmed Tell me how can I assist you Today
+        </template>
+    </category>
+
+    <category>
+        <pattern>*</pattern>
+        <template>
+            Hmm mm, for answers you need to train me
+        </template>
+    </category>
+</aiml>
