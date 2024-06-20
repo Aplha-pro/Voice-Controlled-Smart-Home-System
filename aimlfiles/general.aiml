@@ -1,4 +1,9 @@
-<aiml>
+<aiml version="1.0.1" encoding="UTF-8">
+    <category>
+        <pattern>HI</pattern>
+        <template>Hello</template>
+    </category>
+
     <category>
         <pattern>Hi there My name is *</pattern>
         <template>
