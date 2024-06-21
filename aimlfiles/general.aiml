@@ -1,20 +1,97 @@
-<aiml version="1.0.1" encoding="UTF-8">
-    <category>
-        <pattern>HI</pattern>
-        <template>Hello</template>
-    </category>
+<aiml version="2.0">
 
     <category>
-        <pattern>Hi there My name is *</pattern>
+        <pattern>HI THERE MY NAME IS *</pattern>
         <template>
-            Yes Muhammad Ahmed Tell me how can I assist you Today
+            <think>
+                <set name="user_name"><star /></set>
+            </think>
+            <random>
+                <li>Hello <get name="user_name" />! Tell me how can I assist you today.</li>
+                <li>Yes <get name="user_name" />, How can I help you.</li>
+            </random>
+
         </template>
     </category>
 
     <category>
-        <pattern>*</pattern>
+        <pattern>HELLO MY NAME IS *</pattern>
         <template>
-            Hmm mm, for answers you need to train me
+            <think>
+                <set name="user_name"><star /></set>
+            </think>
+           <srai>HI THERE MY NAME IS <get name="user_name"/></srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>TURN * THE *</pattern>
+        <template>
+            <think>
+                <set name="command"><star index="1" /></set>
+                <set name="device"><star index="2" /></set>
+            </think>
+            <random>
+            <li>Okay, turning <get name="command"/> the <get name="device" />.</li>
+            <li>The <get name="device" /> is now <get name="command"/>.</li>
+            <li>Sure, the <get name="device" /> is <get name="command"/> now.</li>
+            <li>The <get name="device" /> has been turned <get name="command" />.</li>
+            <li>Consider it done! <get name="device" /> is now <get name="command" />.</li>
+            <li>Alright, <get name="device" /> has been <get name="command" /> successfully.</li>
+            <li>Confirmed, <get name="device" /> has been set to <get name="command" />.</li>
+            <li><get name="device" /> is responding, it's <get name="command" />.</li>
+            <li>Understood, <get name="device" /> is now <get name="command" />.</li>
+            <li>Turning <get name="device" /> <get name="command" /> as requested.</li>
+            <li>It's done, <get name="device" /> is now <get name="command" />.</li>
+            <li><get name="device" /> has been adjusted to <get name="command" /> mode.</li>
+            <li>Activation complete, <get name="device" /> is now <get name="command" />.</li>
+            <li>Operational status updated: <get name="device" /> is now <get name="command" />.</li>
+            <li>Turning <get name="device" /> <get name="command" /> is complete.</li>
+        </random>
+        </template>
+    </category>
+
+      <category>
+        <pattern>CAN YOU PLEASE TURN * THE *</pattern>
+        <template>
+            <think>
+                <set name="command"><star index="1" /></set>
+                <set name="device"><star index="2" /></set>
+            </think>
+            <srai>TURN <get name="command" /> THE <get name="device" /></srai>
+        </template>
+    </category>
+
+      <category>
+        <pattern>COULD YOU TURN * THE *</pattern>
+        <template>
+            <think>
+                <set name="command"><star index="1" /></set>
+                <set name="device"><star index="2" /></set>
+            </think>
+                <srai>TURN <get name="command" /> THE <get name="device" /></srai>
+        </template>
+    </category>
+
+      <category>
+        <pattern>SWITCH * THE *</pattern>
+        <template>
+            <think>
+                <set name="command"><star index="1" /></set>
+                <set name="device"><star index="2" /></set>
+            </think>
+            <srai>TURN <get name="command" /> THE <get name="device" /></srai>
+        </template>
+    </category>
+
+      <category>
+        <pattern>POWER  * THE *</pattern>
+        <template>
+            <think>
+                <set name="command"><star index="1" /></set>
+                <set name="device"><star index="2" /></set>
+            </think>
+            <srai>TURN <get name="command" /> THE <get name="device" /></srai>
         </template>
     </category>
 </aiml>

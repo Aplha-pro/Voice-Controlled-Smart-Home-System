@@ -47,6 +47,55 @@ else:
 
 
 
+def apply_mc_change(device, state):
+  devices = {
+    'fan': 1,
+    'light': 2,
+    'ac': 3,
+  }
+  states = {
+    'on': True,
+    'off': False,
+  }
+
+  # > Aliases
+  for psb in [
+      'air conditioner',
+      'cooler',
+      'inverter',
+    ]:
+    if device == psb: device = 'ac'
+
+  for psb in [
+      'roof fan',
+      'some air',
+      'breeze',
+      'pankha',
+    ]:
+    if device == psb: device = 'fan'
+
+  for psb in [
+      'roshni',
+      'lamp',
+    ]:
+    if device == psb: device = 'light'
+
+  for st in [
+      'active',
+    ]:
+    if state == st: state = 'on'
+
+  for st in [
+      'inactive',
+    ]:
+    if state == st: state = 'off'
+
+
+  
+
+  pass
+
+
 
 #> Process
 def run_model(session_id='default', request_input='Hi'):
@@ -54,7 +103,23 @@ def run_model(session_id='default', request_input='Hi'):
 
   if VERBOSE > 1: print(f"Request  = {request_input}\nResponse = ", end='')
   
-  return kernel.respond(
+  response = kernel.respond(
     request_input or DEFAULT_REQUEST,
     os.getenv('STATIC_SESSION_ID') or session_id
   )
+
+  # status o fan, light, ac
+  command = kernel.getPredicate(
+    'command',
+    os.getenv('STATIC_SESSION_ID') or session_id
+  )
+
+  device = kernel.getPredicate(
+    'device',
+    os.getenv('STATIC_SESSION_ID') or session_id
+  )
+
+  print(f"command={command}")
+  print(f"device={device}")
+
+  return response
